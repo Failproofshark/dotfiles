@@ -43,3 +43,10 @@
 ;;Python mode hook
 (add-hook 'python-mode-hook
           '(lambda () (eldoc-mode 1)) t)
+
+;;SLIME
+(add-to-list 'load-path "~/.emacs.d/slime")
+(require 'slime-autoloads)
+
+(setq inferior-lisp-program "/usr/local/bin/ccl")
+(setq slime-contribs '(slime-fancy))
