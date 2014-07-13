@@ -10,6 +10,11 @@
               c-basic-offset 4
               c-default-style "k&r")
 
+;;Melpa
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 ;;Easier buffer switchin
 (ido-mode t)
 
@@ -47,6 +52,6 @@
 ;;SLIME
 (add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime-autoloads)
-
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
