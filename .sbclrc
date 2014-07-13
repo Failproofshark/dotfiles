@@ -1,0 +1,2 @@
+(load "/Users/wasabwack/quicklisp/setup.lisp")
+(load "/Users/wasabwack/Documents/Source/CommonLisp/asdf/build/asdf.lisp")

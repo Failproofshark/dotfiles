@@ -48,5 +48,5 @@
 (add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime-autoloads)
 
-(setq inferior-lisp-program "/usr/local/bin/ccl")
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
