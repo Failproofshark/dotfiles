@@ -22,12 +22,20 @@
 ;;Set color theme
 (load-theme 'wombat)
 
+;; Line numbers
+(global-linum-mode t)
+
 ;;Change this depending on the system
 (setq temporary-backup-directory "~/.emacs_backups")
 (setq backup-directory-alist
       `((".*" . ,temporary-backup-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-backup-directory t)))
+
+;;PHP stuff
+(require 'php-mode)
+(add-hook 'php-mode-hook
+          '(lambda () (define-abbrev php-mode-abbrev-table "ex "extends)))
 
 ;;SGML hook (HTML mode is based on this)
 (defun sgml-hook-customization ()
@@ -40,13 +48,22 @@
 (add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
 
-;;Python mode hook
-(add-hook 'python-mode-hook
-          '(lambda () (eldoc-mode 1)) t)
+;; MELPA packages
+(require 'package)
+(add-to-list 'package-archives
+             '("Marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
 
-;;SLIME
+;;scheme
+(require 'quack)
+
+;;jade template engine
+(require 'sws-mode)
+(require 'jade-mode)
+
+;;Slime
 (add-to-list 'load-path "~/.emacs.d/slime")
 (require 'slime-autoloads)
-
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
